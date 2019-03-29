@@ -853,7 +853,6 @@ public class ExtensionLoader {
 
                 if (view != null) {
                     EventQueue.invokeAndWait(new Runnable() {
-
                         @Override
                         public void run() {
                             // no need to hook view if no GUI
@@ -1297,7 +1296,7 @@ public class ExtensionLoader {
                 	view.addSplashScreenLoadingCompletion(factorPerc);
                 }
                 
-            } catch (Throwable e) {
+            } catch (Exception e) {
                 logExtensionInitError(extension, e);
             }
         }

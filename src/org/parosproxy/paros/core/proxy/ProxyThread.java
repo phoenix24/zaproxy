@@ -301,7 +301,10 @@ public class ProxyThread implements Runnable {
 			        
 			        firstHeader = httpIn.readRequestHeader(isSecure);
 			        firstHeader.setSenderAddress(inSocket.getInetAddress());
+
+			        //Process Request.
 			        processHttp(firstHeader, isSecure);
+
 				} catch (MissingRootCertificateException e) {
 					// Unluckily Firefox and Internet Explorer will not show this message.
 					// We should find a way to let the browsers display this error message.

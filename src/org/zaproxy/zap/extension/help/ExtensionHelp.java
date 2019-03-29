@@ -196,9 +196,7 @@ public class ExtensionHelp extends ExtensionAdaptor {
 	 * @see #findHelpSetUrl()
 	 */
 	private void setHelpEnabled(boolean enabled) {
-		if (getView() == null) {
-			return;
-		}
+		if (getView() == null) { return; }
 
 		JRootPane rootPane = getView().getMainFrame().getRootPane();
 		if (enabled && findHelpSetUrl() != null) {

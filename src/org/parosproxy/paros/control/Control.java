@@ -99,7 +99,7 @@ import org.zaproxy.zap.control.ExtensionFactory;
  */
 public class Control extends AbstractControl implements SessionListener {
 
-	public enum Mode {safe, protect, standard, attack};
+	public enum Mode {safe, protect, standard, attack, zaas};
 	
     private static Logger log = Logger.getLogger(Control.class);
 
@@ -303,15 +303,20 @@ public class Control extends AbstractControl implements SessionListener {
     }
 
     public static Control getSingleton() {
-
         return control;
+    }
+
+    public static boolean initSingletonForZaas() {
+        control = new Control(null, null);
+    	control.mode = Mode.zaas;
+        return true;
     }
 
     public static boolean initSingletonWithView(ControlOverrides overrides) {
         control = new Control(Model.getSingleton(), View.getSingleton());
         return control.init(overrides, true);
     }
-    
+
     public static boolean initSingletonWithoutView(ControlOverrides overrides) {
         control = new Control(Model.getSingleton(), null);
         return control.init(overrides, true);

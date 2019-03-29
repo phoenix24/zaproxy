@@ -20,6 +20,7 @@
 package org.zaproxy.zap.extension.proxies;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class ProxiesParam extends AbstractParam {
 
     private static final String CONFIRM_REMOVE_PROXY_KEY = PROXIES_BASE_KEY + ".confirmRemoveProxy";
 
-    private List<ProxiesParamProxy> proxies = null;
+    private List<ProxiesParamProxy> proxies = Collections.emptyList();
     private boolean confirmRemoveProxy = true;
 
     public ProxiesParam() {
@@ -57,8 +58,7 @@ public class ProxiesParam extends AbstractParam {
     @Override
     protected void parse() {
         try {
-            List<HierarchicalConfiguration> fields = ((HierarchicalConfiguration) getConfig())
-                    .configurationsAt(ALL_PROXIES_KEY);
+            List<HierarchicalConfiguration> fields = ((HierarchicalConfiguration) getConfig()).configurationsAt(ALL_PROXIES_KEY);
             this.proxies = new ArrayList<>(fields.size() + 1);
 
             for (HierarchicalConfiguration sub : fields) {

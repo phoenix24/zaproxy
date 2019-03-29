@@ -106,7 +106,7 @@ public class ExtensionFactory {
             for (int i = 0; i < listExts.size(); i++) {
                 addExtensionImpl(listExts.get(i), extParam);
             }
-            
+
             // Add the ordered extensions
             Iterator<Integer> iter = mapOrderToExtension.keySet().iterator();
             while (iter.hasNext()) {
@@ -117,7 +117,7 @@ public class ExtensionFactory {
                 }
                 loadMessagesAndAddExtension(extensionLoader, ext);
             }
-            
+
             // And then the unordered ones
             for (Extension ext : unorderedExtensions) {
                 if (ext.isEnabled()) {
@@ -149,8 +149,7 @@ public class ExtensionFactory {
             return;
         }
 
-        if (extension.supportsDb(Model.getSingleton().getDb().getType()) &&  
-        		(extension.supportsLowMemory() || ! Constant.isLowMemoryOptionSet())) {
+        if (extension.supportsDb(Model.getSingleton().getDb().getType()) && (extension.supportsLowMemory() || ! Constant.isLowMemoryOptionSet())) {
             extensionLoader.addExtension(extension);
         } else if (!extension.supportsDb(Model.getSingleton().getDb().getType())) {
             log.debug("Not loading extension " + extension.getName() + ": doesnt support " + Model.getSingleton().getDb().getType());

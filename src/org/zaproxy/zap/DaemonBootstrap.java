@@ -89,7 +89,7 @@ class DaemonBootstrap extends HeadlessBootstrap {
                 } catch (Exception e) {
                     logger.error(e.getMessage(), e);
                 }
-                
+
                 if (!control.getProxy().startServer()) {
                     // Failed to listen on the specified proxy, no point in continuing (an error will already have been shown)
                     return;
